@@ -52,9 +52,10 @@ const videoSchema = new mongoose.Schema<IVideo>(
         type: Number,
         default: VIDEO_DIMENSIONS.width,
       },
-      quality?: Number
+      quality?: {
+        type:Number
     },
-  },
+},
   { timestamps: true }
 );
 
