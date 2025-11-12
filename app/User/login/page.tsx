@@ -3,6 +3,7 @@
 import React, { useState, FormEvent } from "react";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 interface FormData {
 
@@ -78,6 +79,8 @@ export default function Login(){
         >
           Submit
         </button>
+
+        <Link href='/User/signup' className="text-black">Signup here</Link>
       </form>
     </div>
   );
