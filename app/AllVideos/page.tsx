@@ -136,7 +136,7 @@ export default function AllVideosPage() {
                     })}
                   </span>
                   <Link
-                    href={`/video/${video.userId}`}
+                    href={`/video/${video._id}`}
                     className="text-blue-600 hover:text-blue-800 font-medium transition"
                   >
                     Watch →

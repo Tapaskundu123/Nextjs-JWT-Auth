@@ -17,7 +17,7 @@ export async function GET(req: NextRequest,{ params }: { params: { id: string } 
     }
 
     // Fetch videos by userId
-    const video = await Video.find({userId:id});
+    const video = await Video.findById(id).lean();
 
     if (video.length === 0) {
       return NextResponse.json(
