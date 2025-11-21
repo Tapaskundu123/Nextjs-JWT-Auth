@@ -1,27 +1,28 @@
-
 import { connectDB } from "@/lib/mongodb";
 import Video from "@/models/video.model";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest,{ params }: { params: { id: string } }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectDB();
 
- const {id} = await params; // Get videoId from the route
+    const { id } = params; // ✅ CORRECT (NO await)
 
     if (!id) {
       return NextResponse.json(
-        { success: false, message: "User ID is required" },
+        { success: false, message: "Video ID is required" },
         { status: 400 }
       );
     }
 
-    // Fetch videos by userId
     const video = await Video.findById(id).lean();
 
-    if (video.length === 0) {
+    if (!video) {
       return NextResponse.json(
-        { success: false, message: "No videos found for this user" },
+        { success: false, message: "Video not found" },
         { status: 404 }
       );
     }
